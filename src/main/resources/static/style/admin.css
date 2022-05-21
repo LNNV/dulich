@@ -1,0 +1,326 @@
+.container {
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+body {
+  background-color: #fff;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+p {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+a {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.add_sum_box {
+  margin-top: 100px;
+}
+
+.add_sum_box .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add_sum_box .container .sum_box {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search_act_box {
+  margin: 20px 0px 20px;
+}
+
+.search_act_box .container {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search_act_box .container .cover_act_box {
+  width: 30%;
+}
+
+.search_act_box .container .cover_act_box .act_box {
+  width: 100%;
+}
+
+.search_act_box .container .search_box {
+  width: 40%;
+  height: 48px;
+  margin-left: 20px;
+}
+
+.search_act_box .container .search_box nav {
+  height: 100%;
+  padding: 0px;
+}
+
+.search_act_box .container .search_box nav form {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search_act_box .container .search_box nav form input {
+  width: 80%;
+  height: 100%;
+}
+
+.search_act_box .container .search_box nav form button {
+  width: 15%;
+  margin-left: 15px;
+  height: 100%;
+  border: 1.5px solid #FF4949;
+  color: #FF4949;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.search_act_box .container .search_box nav form button:hover {
+  background-color: #FF4949;
+  color: #fff;
+}
+
+.search_act_box .container .add_btn_box span {
+  width: 26%;
+}
+
+.search_act_box .container .add_btn_box > button {
+  height: 48px;
+  background-color: #FF4949;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border: 1px solid #FF4949;
+}
+
+.search_act_box .container .add_btn_box:hover button {
+  opacity: 1;
+}
+
+.custommer_box .container table span {
+  width: 25%;
+}
+
+.custommer_box .container table tbody .change_remove_btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.custommer_box .container table tbody .change_remove_btns .remove_btn_box {
+  margin-left: 15px;
+}
+
+.custommer_box .container table tbody .change_remove_btns .remove_btn_box > button {
+  background-color: #FF4949;
+  border: 1px solid #FF4949;
+}
+
+.booking_box .search_act_box .container .add_btn_box span {
+  width: 37%;
+}
+
+.booking_box .search_act_box .container .add_btn_box > button {
+  height: 48px;
+  background-color: #FF4949;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border: 1px solid #FF4949;
+}
+
+.booking_box .search_act_box .container .add_btn_box:hover button {
+  opacity: 1;
+}
+
+.booking_box .custommer_box .container table .change_remove_btns .change_btn_box span {
+  width: 37%;
+}
+
+.tour_box .search_act_box .container .add_btn_box span {
+  width: 28%;
+}
+
+.tour_box .search_act_box .container .add_btn_box > button {
+  height: 48px;
+  background-color: #FF4949;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border: 1px solid #FF4949;
+}
+
+.tour_box .search_act_box .container .add_btn_box:hover button {
+  opacity: 1;
+}
+
+.tour_box .custommer_box .container table .change_remove_btns .change_btn_box span {
+  width: 32%;
+}
+
+.news_box .search_act_box .container .add_btn_box span {
+  width: 28%;
+}
+
+.news_box .search_act_box .container .add_btn_box > button {
+  height: 48px;
+  background-color: #FF4949;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border: 1px solid #FF4949;
+}
+
+.news_box .search_act_box .container .add_btn_box:hover button {
+  opacity: 1;
+}
+
+.news_box .custommer_box .container table .change_remove_btns .change_btn_box span {
+  width: 28%;
+}
+
+.footer {
+  margin-top: 100px;
+  background-color: black;
+  padding: 45px 0px;
+}
+
+.footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer .container .ft_row {
+  width: 25%;
+}
+
+.footer .container .ft_row .ft_heading {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer .container .ft_row .ft_heading h1 {
+  font-size: 30px;
+}
+
+.footer .container .ft_row .ft_content {
+  color: #999;
+}
+
+.footer .container .ft_row1 {
+  margin-right: 28px;
+}
+
+.footer .container .ft_row1 .ft_heading a {
+  color: #FF4949;
+}
+
+.footer .container .ft_row1 .ft_content {
+  font-size: 18px;
+}
+
+.footer .container .ft_row1 .ft_icon {
+  margin-top: 35px;
+}
+
+.footer .container .ft_row1 .ft_icon a {
+  display: inline-block;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-right: 15px;
+}
+
+.footer .container .ft_row1 .ft_icon a:hover i {
+  color: #FF4949;
+}
+
+.footer .container .ft_row1 .ft_icon a i {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-size: 28px;
+  color: #999;
+}
+
+.footer .container .ft_row2 .ft_content ul {
+  padding: 0px;
+}
+
+.footer .container .ft_row2 .ft_content ul li {
+  margin-bottom: 13px;
+}
+
+.footer .container .ft_row2 .ft_content ul li a {
+  color: #999;
+  font-size: 18px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.footer .container .ft_row2 .ft_content ul li a:hover {
+  color: #FF4949;
+}
+
+.footer .container .ft_row2 .ft_content ul li a i {
+  margin-right: 5px;
+}
+
+.footer .container .ft_row3 .ft_content .ft_infor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .container .ft_row3 .ft_content .ft_infor i {
+  margin-right: 10px;
+}
+
+.footer .container .ft_row3 .ft_content .ft_infor p {
+  font-size: 18px;
+}
+
+.footer .ncp {
+  color: #999;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.footer .ncp a {
+  color: #999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.footer .ncp a:hover {
+  color: #fff;
+}
+/*# sourceMappingURL=admin.css.map */

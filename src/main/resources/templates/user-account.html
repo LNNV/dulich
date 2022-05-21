@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản</title>
+    <link rel="stylesheet" th:href="@{/style/login.css}">
+    <link rel="stylesheet" th:href="@{/style/account.css}">
+    <link rel="stylesheet" th:href="@{/style/header.css}">
+    <link rel="shortcut icon"  th:href="@{/asset/real-icon-header.png}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
+        </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header id="header" class="container">
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="#">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item"><span>Promo</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="#">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li><a href="#">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li><a href="#">
+                        <i class="fa-solid fa-gift"></i>
+                      <span class="list-infor">Khuyến mãi</span>   
+                    </a></li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="account">
+        <div class="account__menu">
+            <div class="account__user">
+                <div class="account__user-img" th:text="${userimg}"></div>
+                <div class="account__user-infor">
+                    <h3 th:text="${username}"></h3>
+                    <p>Khách hàng</p>
+                </div>
+            </div>
+            <ul class="account__menu-list">
+                <a href="/user" class="account__link">
+                    <li class="account__list-content">Tài khoản của tôi</li>
+                </a>
+                <a href="#" class="account__link">
+                    <li class="account__list-content">Đặt chỗ của tôi</li>
+                </a>
+                <a href="#" class="account__link">
+                    <li class="account__list-content">Khuyến mãi</li>
+                </a>
+                <a href="/logout" class="account__link">
+                    <li class="account__list-content">Đăng xuất</li>
+                </a>      
+            </ul>
+        </div>
+        <div class="setting">
+            <h1 class="setting__title">Cài đặt</h1>
+            <div class="information">
+                <h3 class="information__data">Thay đổi dữ liệu cá nhân</h3>
+                <form th:action="@{/user}" th:object="${editForm}" method="post" class="login__form ">
+                    <div class="form-control">
+                        <label for="fname">
+                            Tài khoản
+                        </label><br>
+                        <input th:field="*{username}" type="text" id="fname" name="fname" class="cname" required><br>
+                        <small class="request">Vui lòng nhập từ 6-40 kí tự</small><br>
+                        <small th:text="${usernameError}" style="color:red" class="request"></small><br>
+                    </div>
+                    <div class="form-control">
+                        <label for="fpass">
+                            Mật khẩu
+                        </label><br>
+                        <input th:field="*{password}" type="password" id="fpass" name="fpass" class="cpass" required><br>
+                        <small class="request"></small><br><br>
+                    </div>
+                    <div class="form-control">
+                        <label for="fRepass">
+                            Nhập lại mật khẩu
+                        </label><br>
+                        <input th:field="*{rePassword}" type="password" id="fRepass" name="fRepass" class="cRepass" required><br>
+                        <small th:text="${passwordError}" class="request" style="color:red"></small><br><br>
+                    </div>
+                    <div class="form-control">
+                        <label for="fFullname" class="lFullname">
+                            Họ và tên
+                        </label><br>
+                        <input th:field="*{fullName}" type="text" id="fFullname" name="fFullname" class="cFullname" required><br>
+                        <br><br>
+                    </div>
+                    <div class="form-control">
+                        <label for="fphone" class="lphone">
+                            Số điện thoại
+                        </label><br>
+                        <input th:field="*{phone}" type="number" id="fphone" name="fphone" class="cphone" required><br>
+                        <small class="request">Vui lòng nhập số</small><br>
+                        <small th:text="${phoneError}" style="color:red" class="request"></small><br>
+                    </div>
+                    <div class="form-control">
+                        <label for="fEmail" >
+                            Email
+                        </label><br>
+                        <input th:field="*{email}" type="text" id="fEmail" name="fEmail" class="cEmail" required><br>
+                        <small class="request">Vui lòng nhập địa chỉ Email của bạn</small>
+                        <small th:text="${emailError}" style="color:red" class="request"></small><br>
+                    </div>
+                    <button type="submit" class="login-btn">Lưu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./login.js"></script>
+</body>
+</html>
