@@ -184,36 +184,30 @@
                             <h5 class="modal-title" id="exampleModalLabel">Tạo tin mới</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                        <form th:action="@{/admin/news}" method="post">
                             <div class="modal-body">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã tin</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>
-                                <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Chủ đề</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="topic" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Intro</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="intro" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Nội dung chính </span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="content" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Tác  giả/ Nguồn</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Ngày đăng</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Tác giả/ Nguồn</span>
+                                    <input th:name="source" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                            <button type="button" class="btn btn-primary">Lưu</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                <button type="submit" class="btn btn-primary">Lưu</button>
                             </div>
+                        </form>
                         </div>
                         </div>
                     </div>
@@ -242,91 +236,83 @@
                 
                     <!-- Table body -->
                     <tbody>
-                        <tr>
-                            
-                            <td>ID1 news</td>
-                            <td>ID1 news</td>
-                            <td>ID1 news</td>
-                            <td>ID1 news</td>
-                            <td>news...</td>
-                            <td>date...</td>
-                            <td class="change_remove_btns">
-                                <div class="change_btn_box">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop42">
-                                        Sửa
-                                    </button>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop42" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Thay đổi tin tức</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <th:block th:each="item : ${newsList}">
+                            <tr>
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.topic}"></td>
+                                <td th:text="${item.intro}"></td>
+                                <td th:text="${item.content}"></td>
+                                <td th:text="${item.source}"></td>
+                                <td th:text="${item.postedAt}"></td>
+                                <td class="change_remove_btns">
+                                    <div class="change_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop42">
+                                            Sửa
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop42" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Thay đổi tin tức</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form th:action="@{/admin/news/__${item.id}__/update}" method="post">
+                                                    <div class="modal-body">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Chủ đề</span>
+                                                            <input th:name="topic" th:value="${item.topic}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Intro</span>
+                                                            <input th:name="intro" th:value="${item.intro}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Nội dung chính</span>
+                                                            <input th:name="content" th:value="${item.content}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Tác giả/ Nguồn</span>
+                                                            <input th:name="source" th:value="${item.source}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã tin</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Chủ đề</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên Tour</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Intro</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Nội dung chính</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Tác giả/ Nguồn</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Ngày đăng</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary">Lưu</button>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="remove_btn_box">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal43">
-                                        Xoá
-                                    </button>                                
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal43" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Xoá tin tức ?</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="remove_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal43">
+                                            Xoá
+                                        </button>                                
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal43" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Xoá tin tức ?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                <form th:action="@{/admin/news/__${item.id}__/delete}" method="post">
+                                                    <button type="submit" class="btn btn-primary">Xoá</button>
+                                                </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary">Xoá</button>
                                             </div>
-                                        </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                       
+                                </td>
+                            </tr>
+                        </th:block>
                     </tbody>
                     <!-- Table body -->
                 </table>
