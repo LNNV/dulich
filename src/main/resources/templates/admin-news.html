@@ -154,23 +154,25 @@
         </div>
         <div class="search_act_box">
             <div class="container">
-                <div class="cover_act_box">
-                    <div class="act_box">
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Sắp xếp theo thời gian</option>
-                            <option value="1">Sắp xếp theo chủ đề</option> 
-                        </select>
-                    </div>
-                </div>
                 
-                <div class="search_box">
-                    <nav class="navbar navbar-light bg-light">
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <div class="cover_act_box">
+                        <div class="act_box">
+                            <select onchange="this.form.submit()" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option value="postedAt" selected>Sắp xếp theo thời gian</option>
+                                <option value="topic">Sắp xếp theo chủ đề</option> 
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="search_box">
+                        <nav class="navbar navbar-light bg-light">
+                            <form th:action="@{/admin/news}" class="form-inline">
+                            <input th:name="query" th:value="${query}" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
-                    </nav>
-                </div>
+                        </nav>
+                    </div>
+                
                 <div class="add_btn_box">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal41">

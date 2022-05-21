@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dulich.dulich.model.News;
 
@@ -21,9 +22,12 @@ public class NewsController {
     private NewsRepository repository;
 
     @GetMapping("/admin/news")
-    public String index(Model model) {
-        List<News> newsList = repository.findAll();
+    public String index(@RequestParam(name = "query") Optional<String> query, Model model) {
+        String quely = query.orElse("");
+
+        List<News> newsList = repository.findByKeyword(quely);
         model.addAttribute("newsList", newsList);
+        model.addAttribute("query", quely);
 
         return "admin-news";
     }
