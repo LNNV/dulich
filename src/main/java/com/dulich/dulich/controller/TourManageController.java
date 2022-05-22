@@ -47,12 +47,12 @@ public class TourManageController {
         tour.setNumseat(tourForm.getNumseat());
         tour.setCost(tourForm.getCost());
         try {
-            tour.setStartday(new SimpleDateFormat("yyyy-mm-dd").parse(tourForm.getStartday()));
+            tour.setStartday(new SimpleDateFormat("yyyy-MM-dd").parse(tourForm.getStartday()));
         } catch (ParseException e) {
             
         }
         try {
-            tour.setEndday(new SimpleDateFormat("yyyy-mm-dd").parse(tourForm.getEndday()));
+            tour.setEndday(new SimpleDateFormat("yyyy-MM-dd").parse(tourForm.getEndday()));
         } catch (ParseException e) {
 
         }
@@ -64,6 +64,7 @@ public class TourManageController {
     @PostMapping("/admin/tour/{id}/update")
     public String update(@PathVariable(value="id") long id, @ModelAttribute TourForm tourForm, Model model) {
         model.addAttribute("tourForm", tourForm);
+
         Tour tour = tourRepository.findById(id).get();
         tour.setName(tourForm.getName());
         tour.setPicture(tourForm.getPicture());
@@ -71,13 +72,15 @@ public class TourManageController {
         tour.setDescription(tourForm.getDescription());
         tour.setNumseat(tourForm.getNumseat());
         tour.setCost(tourForm.getCost());
+
         try {
-            tour.setStartday(new SimpleDateFormat("yyyy-mm-dd").parse(tourForm.getStartday()));
+            tour.setStartday(new SimpleDateFormat("yyyy-MM-dd").parse(tourForm.getStartday()));
         } catch (ParseException e) {
             
         }
+
         try {
-            tour.setEndday(new SimpleDateFormat("yyyy-mm-dd").parse(tourForm.getEndday()));
+            tour.setEndday(new SimpleDateFormat("yyyy-MM-dd").parse(tourForm.getEndday()));
         } catch (ParseException e) {
 
         }

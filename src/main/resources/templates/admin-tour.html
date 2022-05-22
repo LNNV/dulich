@@ -262,8 +262,8 @@
                                 <td th:text="${item.id}"></td>
                                 <td th:text="${item.name}"></td>
                                 <td th:text="${item.picture}"></td>
-                                <td th:text="${item.startday}"></td>
-                                <td th:text="${item.endday}"></td>
+                                <td th:text="${#dates.format(item.startday, 'dd-MM-yyyy')}"></td>
+                                <td th:text="${#dates.format(item.endday, 'dd-MM-yyyy')}"></td>
                                 <td th:text="${item.startplace}"></td>
                                 <td th:text="${item.description}"></td>
                                 <td th:text="${item.numseat}"></td>
