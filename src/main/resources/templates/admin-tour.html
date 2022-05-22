@@ -166,8 +166,8 @@
                 
                 <div class="search_box">
                     <nav class="navbar navbar-light bg-light">
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form th:action="@{/admin/tour}" class="form-inline">
+                            <input th:name="query" th:value="${query}" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </nav>
@@ -185,44 +185,46 @@
                             <h5 class="modal-title" id="exampleModalLabel">Tạo Tour mới</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                        <form th:action="@{/admin/tour}" method="post">
                             <div class="modal-body">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã Tour</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>
-                                <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tên Tour</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Hình ảnh</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="picture" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Ngày xuất phát</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="startday" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Ngày kết thúc</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="endday" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Nơi khởi hành</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="startplace" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mô tả</span>
+                                    <input th:name="description" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Số chỗ</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="numseat" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Giá</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="cost" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                            <button type="button" class="btn btn-primary">Lưu</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
                             </div>
+                        </form>
                         </div>
                         </div>
                     </div>
@@ -244,6 +246,7 @@
                         <th>Thời gian bắt đầu</th>
                         <th>Thời gian kết thúc</th>
                         <th>Nơi khởi hành</th>
+                        <th>Mô tả</th>
                         <th>Số chỗ</th>
                         <th>Giá</th>
                         <th>Chi tiết</th>
@@ -253,98 +256,104 @@
                 
                     <!-- Table body -->
                     <tbody>
-                        <tr>
-                            
-                            <td>ID1</td>
-                            <td>Tên tour</td>
-                            <td>Hình ảnh</td>
-                            <td>Thời gian đi</td>
-                            <td>Thời gian đến</td>
-                            <td>Nơi khởi hành</td>
-                            <td>Số chỗ....</td>
-                            <td>Giá...</td>
-                            
-                            <td class="change_remove_btns">
-                                <div class="change_btn_box">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-                                        Sửa
-                                    </button>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Thông tin Tour</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <th:block th:each="item : ${tourList}">
+
+                            <tr>  
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.name}"></td>
+                                <td th:text="${item.picture}"></td>
+                                <td th:text="${item.startday}"></td>
+                                <td th:text="${item.endday}"></td>
+                                <td th:text="${item.startplace}"></td>
+                                <td th:text="${item.description}"></td>
+                                <td th:text="${item.numseat}"></td>
+                                <td th:text="${item.cost} + ' VNĐ'"></td>
+                                
+                                <td class="change_remove_btns">
+                                    <div class="change_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#adjust-'+item.id}">
+                                            Sửa
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" th:attr="id= ${'adjust-'+item.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Thông tin Tour</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form th:action="@{/admin/tour/__${item.id}__/update}" th:object="${tourForm}" method="post">
+                                                    <div class="modal-body">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Tên Tour</span>
+                                                            <input th:name="name" th:value="${item.name}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Hình ảnh</span>
+                                                            <input th:name="picture" th:value="${item.picture}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Thời gian bắt đầu</span>
+                                                            <input th:name="startday" th:value="${item.startday}" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Thời gian kết thúc</span>
+                                                            <input th:name="endday" th:value="${item.endday}" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Nơi khởi hành</span>
+                                                            <input th:name="startplace" th:value="${item.startplace}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Mô tả</span>
+                                                            <input th:name="description" th:value="${item.description}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Số chỗ</span>
+                                                            <input th:name="numseat" th:value="${item.numseat}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Giá</span>
+                                                            <input th:name="cost" th:value="${item.cost}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã Tour</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên Tour</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Hình ảnh</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Thời gian bắt đầu</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Thời gian kết thúc</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Nơi khởi hành</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Số chỗ</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Giá</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary">Lưu</button>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="remove_btn_box">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal12">
-                                        Xoá
-                                    </button>                                
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Xoá Tour ?</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="remove_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#exampleModal12-'+item.id}">
+                                            Xoá
+                                        </button>                                
+                                        <!-- Modal -->
+                                        <div class="modal fade" th:attr="id= ${'exampleModal12-'+item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Xoá Tour ?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                <form th:action="@{/admin/tour/__${item.id}__/delete}" method="post">
+                                                    <button type="submit" class="btn btn-primary">Xoá</button>
+                                                </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary">Xoá</button>
                                             </div>
-                                        </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        
+                                </td>
+                            </tr>
+                        </th:block>
                     </tbody>
                     <!-- Table body -->
                 </table>

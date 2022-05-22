@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style/tour-list/baocao.css}" />
+    <link rel="stylesheet" th:href="@{/style/tour-list/reset.css}" />
+    <link rel="stylesheet" th:href="@{/style/header-admin.css}" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> -->
+    <title>Booking</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Min.css owl-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon"  th:href="@{/asset/real-icon-header.png}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
+    </style>
+    
+</head>
+<body>
+    <header id="header">
+        
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="#">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a>
+                <a href="/admin/account">
+                    <li class="header__nav-list-item"><span>Khách hàng</span></li>
+                </a>
+                <a href="/admin/tour">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a>
+                <a href="/admin/booking">
+                    <li class="header__nav-list-item"><span>Đặt Tour</span></li>
+                </a>
+                <a href="/admin/news">
+                    <li class="header__nav-list-item"><span>Tin tức</span></li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul class="menu__nav-list">
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="list-infor">Tài khoản </span> 
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-list"></i>
+                            <span class="list-infor">Đặt Tour </span> 
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li><a href="#">
+                        <i class="fa-solid fa-gift"></i>
+                      <span class="list-infor">Khuyến mãi</span>   
+                    </a></li>
+                </ul>
+                <ul class="menu__nav-list">
+                    <li><a href="#">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="tour">
+        <div class="container">
+            <div class="title_box">
+                <h2>BEST TOUR</h2>
+                <h1>The best experience for everyone</h1>
+                <p>Book the best quality tour of the year. Book a tour now to get a discount. The company organizes tours with many attractive programs for young people</p>
+            </div>
+            <div class="tour__search">
+                <p>Tìm kiếm Tour:</p>                
+                <div class="search__input">
+                    <input type="text" placeholder="Thành Phố,Điểm Đến">
+                    <div class="search__icon"><i class="fa-solid fa-location-dot"></i></div>
+                </div>                
+            </div>            
+            <div class="tour__main">                
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/phuquoc.jpg}" alt="">
+                        <div class="tour__price">600.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Đảo Phú Quốc</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/danang.jpg}" alt="">
+                        <div class="tour__price">800.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Thành Phố Đà Nẵng</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/dalat_tour.jpg}" alt="">
+                        <div class="tour__price">600.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Thành Phố Đà Lạt</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/Hue2.jpg}" alt="">
+                        <div class="tour__price">400.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Huế</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/vinh-ha-long-1.jpg}" alt="">
+                        <div class="tour__price">1.000.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Vịnh Hạ Long</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/sapa.jpg}" alt="">
+                        <div class="tour__price">700.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Sa Pa</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/Vinh-Nha-Trang-14.jpg}" alt="">
+                        <div class="tour__price">1.200.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Thành Phố Nha Trang</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/QuangNinh.jpg}" alt="">
+                        <div class="tour__price">500.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Quảng Ninh</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+                <div class="tour__list">
+                    <div class="tour__img" >
+                        <img class="tour__img-header" th:src="@{asset/img/Hinh-anh-Hoi-An.jpg}" alt="">
+                        <div class="tour__price">1.000.000 VND</div>
+                    </div>
+                    <div class="tour__detail">
+                        <p>Phố cổ Hội An</p>
+                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
+                        <br>
+                        <small>Còn 40 chỗ</small>
+                        <div class="rate">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="tour__btn" type="submit">Đặt vé</button>
+                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+</body>

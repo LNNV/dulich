@@ -249,12 +249,11 @@
                                 <td class="change_remove_btns">
                                     <div class="change_btn_box">
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop42">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#adjust-'+item.id}">
                                             Sửa
                                         </button>
-                                        
                                         <!-- Modal -->
-                                        <div class="modal fade" id="staticBackdrop42" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal fade" th:attr="id= ${'adjust-'+item.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -291,11 +290,11 @@
                                     </div>
                                     <div class="remove_btn_box">
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal43">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#exampleModal43-'+item.id}">
                                             Xoá
                                         </button>                                
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal43" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" th:attr="id= ${'exampleModal43-'+item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

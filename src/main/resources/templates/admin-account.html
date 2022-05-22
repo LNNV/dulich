@@ -165,8 +165,8 @@
                 
                 <div class="search_box">
                     <nav class="navbar navbar-light bg-light">
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form th:action="@{/admin/account}" class="form-inline">
+                            <input th:name="query" th:value="${query}" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </nav>
@@ -228,7 +228,7 @@
                         <th>ID</th>
                         <th>Họ và tên</th>
                         <th>Số điện thoại</th>
-                        <th>EMail</th>
+                        <th>Email</th>
                         <th>Tên tài khoản</th>
                         <th>Mật khẩu</th>
                         <th>Chi tiết</th>
@@ -238,60 +238,64 @@
                 
                     <!-- Table body -->
                     <tbody>
-                        <tr>                            
-                            <td>ID1</td>
-                            <td>Họ và tên</td>
-                            <td>Số điện thoại</td>
-                            <td>EMail</td>
-                            <td>Tên tài khoản</td>
-                            <td>Mật Khẩu.....</td>
-                            <td class="change_remove_btns">
-                                <div class="change_btn_box">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        Sửa
-                                    </button>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Thông tin khách hàng</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <th:block th:each="item : ${accountList}">
+                            <tr>                            
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.fullname}"></td>
+                                <td th:text="${item.phone}"></td>
+                                <td th:text="${item.email}"></td>
+                                <td th:text="${item.username}"></td>
+                                <td th:text="${item.pass}"></td>
+                                <td class="change_remove_btns">
+                                    <div class="change_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#adjust-'+item.id}">
+                                            Sửa
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" th:attr="id= ${'adjust-'+item.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Thông tin khách hàng</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form th:action="@{/admin/account/__${item.id}__/update}" method="post">
+                                                    <div class="modal-body">
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Họ tên</span>
+                                                            <input th:name="fullname" th:value="${item.fullname}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                                                            <input th:name="email" th:value="${item.email}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">SĐT</span>
+                                                            <input th:name="phone" th:value="${item.phone}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Tên tài khoản</span>
+                                                            <input th:name="username" th:value="${item.username}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="inputGroup-sizing-default">Mật khẩu</span>
+                                                            <input th:name="pass" th:value="${item.pass}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Họ tên</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">SĐT</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên tài khoản</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Mật khẩu</span>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary">Lưu</button>
                                             </div>
                                         </div>
-                                        </div>
-                                    </div>
-                                </div>                                
-                            </td>
-                        </tr>   
+                                    </div>                                
+                                </td>
+                            </tr>   
+                        </th:block>
                     </tbody>
                     <!-- Table body -->
                 </table>
