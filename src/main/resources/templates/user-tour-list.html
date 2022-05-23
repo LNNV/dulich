@@ -101,200 +101,38 @@
             <div class="tour__search">
                 <p>Tìm kiếm Tour:</p>                
                 <div class="search__input">
-                    <input type="text" placeholder="Thành Phố,Điểm Đến">
-                    <div class="search__icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <form th:action="@{/tour-list}">
+                        <input th:name="query" type="text" placeholder="Thành Phố,Điểm Đến">
+                        <div class="search__icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <input type="submit" hidden />
+                    </form>
                 </div>                
             </div>            
-            <div class="tour__main">                
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/phuquoc.jpg}" alt="">
-                        <div class="tour__price">600.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Đảo Phú Quốc</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
+            <div class="tour__main">
+                <th:block th:each="item : ${tourList}">
+                    <div class="tour__list">
+                        <div class="tour__img" >
+                            <img class="tour__img-header" th:src="${item.picture}" alt="">
+                            <div class="tour__price"><span th:text="${#numbers.formatInteger(item.cost, 3, 'POINT')}"></span>&nbsp;VND</div>
                         </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/danang.jpg}" alt="">
-                        <div class="tour__price">800.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Thành Phố Đà Nẵng</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                        <div class="tour__detail">
+                            <p th:text="${item.name}"></p>
+                            <p th:text="${item.startplace}"></p>
+                            <span class="date-start" th:text="${#dates.format(item.startday, 'dd-MM-yyyy')}"></span>&nbsp;-&nbsp;<span class="date-end" th:text="${#dates.format(item.endday, 'dd-MM-yyyy')}"></span>
+                            <br>
+                            <small>Còn&nbsp;<span th:text="${item.numseat}"></span>&nbsp;chỗ</small>
+                            <div class="rate">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
                         </div>
+                        <button class="tour__btn" type="submit">Đặt vé</button>
+                        <button class="tour__btn-detail" type="submit">Chi tiết</button>
                     </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/dalat_tour.jpg}" alt="">
-                        <div class="tour__price">600.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Thành Phố Đà Lạt</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/Hue2.jpg}" alt="">
-                        <div class="tour__price">400.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Huế</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/vinh-ha-long-1.jpg}" alt="">
-                        <div class="tour__price">1.000.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Vịnh Hạ Long</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/sapa.jpg}" alt="">
-                        <div class="tour__price">700.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Sa Pa</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/Vinh-Nha-Trang-14.jpg}" alt="">
-                        <div class="tour__price">1.200.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Thành Phố Nha Trang</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/QuangNinh.jpg}" alt="">
-                        <div class="tour__price">500.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Quảng Ninh</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
-                <div class="tour__list">
-                    <div class="tour__img" >
-                        <img class="tour__img-header" th:src="@{asset/img/Hinh-anh-Hoi-An.jpg}" alt="">
-                        <div class="tour__price">1.000.000 VND</div>
-                    </div>
-                    <div class="tour__detail">
-                        <p>Phố cổ Hội An</p>
-                        <span class="date-start">20/05/2022</span>-<span class="date-end">23/05/2022</span>
-                        <br>
-                        <small>Còn 40 chỗ</small>
-                        <div class="rate">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <button class="tour__btn" type="submit">Đặt vé</button>
-                    <button class="tour__btn-detail" type="submit">Chi tiết</button>
-                </div>
+                </th:block>
             </div>
         </div>
     </div>
