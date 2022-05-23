@@ -12,8 +12,8 @@ ul,li{
 }
 
 #header{
-    /* position: fixed; */
     z-index: 5;
+    position: fixed;
     right: 0;
     left: 0;
     top: 0;
