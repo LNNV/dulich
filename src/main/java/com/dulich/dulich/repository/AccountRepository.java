@@ -16,6 +16,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findByPhone(String phone);
     Optional<Account> findByEmail(String email);
 
-    @Query(value = "SELECT * FROM Account WHERE Account.role != 'admin'", nativeQuery = true)
+    @Query(value = "SELECT * FROM Account WHERE Account.role != 'admin' AND (Account.email LIKE %:keyword% OR Account.fullname LIKE %:keyword% OR Account.phone LIKE %:keyword%)", nativeQuery = true)
     List<Account> findByKeyword(@Param("keyword") String keyword);
 }

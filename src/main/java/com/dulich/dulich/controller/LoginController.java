@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.dulich.dulich.form.LoginForm;
 import com.dulich.dulich.model.Account;
 import com.dulich.dulich.repository.AccountRepository;
-import com.dulich.dulich.service.StoreDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
