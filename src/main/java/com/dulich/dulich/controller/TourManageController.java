@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.dulich.dulich.form.TourForm;
+import com.dulich.dulich.model.Book;
 import com.dulich.dulich.model.Tour;
+import com.dulich.dulich.repository.BookRepository;
 import com.dulich.dulich.repository.TourRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TourManageController {
     
     @Autowired
-    TourRepository tourRepository;
+    private TourRepository tourRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     @GetMapping("/admin/tour")
     public String tour(@RequestParam(name = "query") Optional<String> query, Model model) {
@@ -92,7 +97,12 @@ public class TourManageController {
     @PostMapping("/admin/tour/{id}/delete")
     public String delete(@PathVariable(value="id") long id, @ModelAttribute Tour tour, Model model) {
         Tour temp = tourRepository.getById(id);
-
+        List<Book> books = bookRepository.findByTour(tour);
+        if (books.size() > 0) {
+            for (Book book : books) {
+                bookRepository.delete(book);
+            }
+        }
         tourRepository.delete(temp);
 
         return "redirect:/admin/tour";

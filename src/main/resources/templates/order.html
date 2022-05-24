@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vé đã đặt</title>
+    <link rel="stylesheet" th:href="@{/style/final/account.css}">
+    <link rel="stylesheet" th:href="@{/style/final/order.css}">
+    <link rel="stylesheet" th:href="@{/style/final/baocao.css}">
+    <link rel="stylesheet" th:href="@{/style/final/header.css}">
+    <link rel="shortcut icon"  th:href="@{/asset/img/real-icon-header.png}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header id="header" >
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="#">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="#about-section">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="#news">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="#contact">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="#tour-section">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/booked">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="order">
+      <div class="account__menu">
+        <div class="account__user">
+          <div class="account__user-img" th:text="${userimg}"></div>
+          <div class="account__user-infor">
+            <h3 th:text="${username}"></h3>
+            <p>Khách hàng</p>
+          </div>
+        </div>
+        <ul class="account__menu-list">
+          <a href="/user" class="account__link">
+            <li class="account__list-content">Tài khoản của tôi</li>
+          </a>
+          <a href="/user/booked" class="account__link">
+            <li class="account__list-content">Đặt chỗ của tôi</li>
+          </a>
+          <a href="/logout" class="account__link">
+            <li class="account__list-content">Đăng xuất</li>
+          </a>
+        </ul>
+      </div>
+      <div class="purchase">
+        <h2 class="setting__title">Vé điện tử & phiếu thanh toán hiện hành</h2>
+        
+        <div class="order__list_yes">
+          <!-- <div class="custommer_box">
+            <div class="container">
+            </div>
+          </div> -->
+          <table class="table table-bordered">
+            <!-- Table head -->
+            <thead>
+              <tr>
+                <th>Tên Tour</th>
+                <th>Thời gian đặt</th>
+                <th>Giá</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <!-- Table head -->
+
+            <!-- Table body -->
+            <tbody>
+                <th:block th:each="item : ${bookList}">
+                    <tr>
+                        <td th:text="${item.tour.name}"></td>
+                        <td th:text="${item.bookat}"></td>
+                        <td th:text="${item.tour.cost}"></td>
+
+                        <td class="change_remove_btns">
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#exampleModal90-'+item.id}">
+                                Huỷ
+                            </button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" th:attr="id= ${'exampleModal90-'+item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn huỷ ?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                                    <form th:action="@{/user/booked/__${item.id}__/delete}" method="post">
+                                        <button type="submit" class="btn btn-primary">Xoá</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+            <!-- Table body -->
+          </table>
+          <!-- Button trigger modal -->          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

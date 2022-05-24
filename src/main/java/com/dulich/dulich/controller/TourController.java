@@ -58,6 +58,7 @@ public class TourController {
         model.addAttribute("numseat", tour.getNumseat());
         model.addAttribute("description", tour.getDescription());
         model.addAttribute("place", tour.getPlace());
+        model.addAttribute("idtour", tour.getId());
         return "tour-detail";
     }
 
@@ -89,6 +90,8 @@ public class TourController {
         book.setBookat(LocalDateTime.now());
         book.setPayment(payment);
         bookRepository.save(book);
+        tour.setNumseat(tour.getNumseat() - 1);
+        tourRepository.save(tour);
         return "redirect:/tour/book/{id}";
     }
 }

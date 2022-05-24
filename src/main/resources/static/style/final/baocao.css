@@ -247,8 +247,10 @@ a {
           justify-content: center;
 }
 
-.contact .container .contact_details .ct_row2 .contact_btn a {
+.contact .container .contact_details .ct_row2 .contact_btn button {
   color: #fff;
+  background-color: #FF4949;
+  border: none;
   font-size: 22px;
 }
 

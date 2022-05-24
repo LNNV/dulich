@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.dulich.dulich.model.Book;
+import com.dulich.dulich.model.Tour;
 import com.dulich.dulich.repository.AccountRepository;
 import com.dulich.dulich.repository.BookRepository;
 import com.dulich.dulich.repository.TourRepository;
@@ -39,9 +40,10 @@ public class BookManageController {
     @PostMapping("/admin/book/{id}/delete")
     public String remove(@PathVariable(value="id") long id, Model model) {
         Book book = bookRepository.getById(id);
-
+        Tour tour = book.getTour();
         bookRepository.delete(book);
-
+        tour.setNumseat(tour.getNumseat() + 1);
+        tourRepository.save(tour);
         return "redirect:/admin/book";
     }
 }

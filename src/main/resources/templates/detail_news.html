@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New</title>
+    <title>News</title>
     <link rel="stylesheet" th:href="@{/style/final/baocao.css}">
     <link rel="stylesheet" th:href="@{/style/final/tour-detail.css}">
     <link rel="stylesheet" th:href="@{/style/final/header.css}">
-    <link rel="shortcut icon"  href="../img/real-icon-header.png">
+    <link rel="shortcut icon"  th:href="@{/asset/img/real-icon-header.png}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
@@ -46,7 +46,7 @@
                     </a></li>
                 </ul>
                 <ul th:if="${loged}" class="menu__nav-list">
-                    <li><a href="/user/odered">
+                    <li><a href="/user/booked">
                         <i class="fa-solid fa-list"></i>
                         <span class="list-infor">Đặt chỗ của tôi</span> 
                     </a></li>

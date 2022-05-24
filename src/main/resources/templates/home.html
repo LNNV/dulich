@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> -->
-    <title>Booking</title>
+    <title>Trang chủ</title>
 
     
     <!--Min.css owl-->
@@ -69,7 +69,7 @@
                     </a></li>
                 </ul>
                 <ul th:if="${loged}" class="menu__nav-list">
-                    <li><a href="/user/odered">
+                    <li><a href="/user/booked">
                         <i class="fa-solid fa-list"></i>
                         <span class="list-infor">Đặt chỗ của tôi</span> 
                     </a></li>
@@ -352,16 +352,18 @@
                 </div>
                 <div class="row ct_row2"style="padding: 113px 0;"data-aos="fade-left" data-aos-delay="800" data-aos-duration="600">
                     
-                    <div class="message__text">
-                        <div class="details dt_ms">
-                            <i class="fa-solid fa-pen"></i>
-                            <textarea name="" id=""  placeholder="Góp ý..."></textarea>
-                            <!-- <input type="textarea" placeholder="Message"> -->
+                    <form th:action="@{/home}" method="post">
+                        <div class="message__text">
+                            <div class="details dt_ms">
+                                <i class="fa-solid fa-pen"></i>
+                                <textarea th:name="content" id=""  placeholder="Góp ý..."></textarea>
+                                <!-- <input type="textarea" placeholder="Message"> -->
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact_btn" >
-                        <a href="#">Send Message</a>
-                    </div>
+                        <div th:if="${loged}" class="contact_btn" >
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

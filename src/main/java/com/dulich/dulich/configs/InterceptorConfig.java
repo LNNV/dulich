@@ -2,6 +2,7 @@ package com.dulich.dulich.configs;
 
 import com.dulich.dulich.interceptor.AdminInterceptor;
 import com.dulich.dulich.interceptor.LoginInterceptor;
+import com.dulich.dulich.interceptor.UserInterceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -19,8 +20,14 @@ public class InterceptorConfig implements WebMvcConfigurer {
             .addPathPatterns("/user/*")
             .excludePathPatterns("/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg");
 
-        registry.addInterceptor(new AdminInterceptor())
+        registry.addInterceptor(new UserInterceptor())
+            .addPathPatterns("/login")
             .addPathPatterns("/admin/*")
+            .excludePathPatterns("/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg");
+
+        registry.addInterceptor(new AdminInterceptor())
+            .excludePathPatterns("/admin/*")
+            .excludePathPatterns("/logout")
             .excludePathPatterns("/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg");
     }
 }

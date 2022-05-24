@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản</title>
     <link rel="stylesheet" th:href="@{/style/login.css}">
-    <link rel="stylesheet" th:href="@{/style/account.css}">
-    <link rel="stylesheet" th:href="@{style/final/header.css}">
+    <link rel="stylesheet" th:href="@{/style/final/account.css}">
+    <link rel="stylesheet" th:href="@{/style/final/header.css}">
+    
     <link rel="shortcut icon"  th:href="@{/asset/real-icon-header.png}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
@@ -49,7 +50,7 @@
                     </a></li>
                 </ul>
                 <ul th:if="${loged}" class="menu__nav-list">
-                    <li><a href="/user/odered">
+                    <li><a href="/user/booked">
                         <i class="fa-solid fa-list"></i>
                         <span class="list-infor">Đặt chỗ của tôi</span> 
                     </a></li>
@@ -82,7 +83,7 @@
                 <a href="/user" class="account__link">
                     <li class="account__list-content">Tài khoản của tôi</li>
                 </a>
-                <a href="#" class="account__link">
+                <a href="/user/booked" class="account__link">
                     <li class="account__list-content">Đặt chỗ của tôi</li>
                 </a>
                 <a href="/logout" class="account__link">

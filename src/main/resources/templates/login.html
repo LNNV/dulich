@@ -45,12 +45,12 @@
                         Tài khoản
                     </label><br>
                     <input th:field="*{username}" type="text" id="fname" name="fname" class="cname"><br>
-                    <small th:text="${usernameError}" class="errorMessage"></small><br>
+                    <small th:text="${usernameError}" class="errorMessage" style="color: red;"></small><br>
                     <label for="fpass">
                         Mật khẩu
                     </label><br>
                     <input th:field="*{password}" type="password" id="fpass" name="fpass" class="cpass"><br>
-                    <small th:text="${passwordError}" class="errorMessage"></small>
+                    <small th:text="${passwordError}" class="errorMessage" style="color: red;"></small>
                     <p class="request"></p>
                     <button type="submit" class="login-btn">Đăng nhập</button>
                 </form>

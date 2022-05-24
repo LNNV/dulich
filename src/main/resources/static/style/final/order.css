@@ -1,0 +1,55 @@
+.order{
+    display: flex;
+    padding: 0 100px;
+    background-color: #f7f9fa;
+    margin-top: 100px;
+}
+.order__list-no{
+    display: flex;
+    align-items: center;
+}
+.order__list-no img{
+    margin-right: 22px;
+}
+.order__list-no-infor{
+
+}
+.order__list-no-infor h3{
+    margin-bottom:20px;
+}
+.history__order-link{
+    color: rgb(31, 181, 246);
+}
+.history__main{
+    position: absolute;
+    bottom: 0;
+}
+.order__list_yes{
+
+}
+.setting__title{
+
+}
+.history__order{
+
+}
+.header__nav-list {
+    margin-bottom: 0px;
+}
+.list-infor {
+    color: black;
+}
+
+.menu__nav-list {
+    padding-left: 0px;
+    
+}
+.menu__nav-list li a i {
+    color: black;
+}
+.account__menu-list {
+    padding-left: 0px;
+}
+.account__list-content {
+    color: black;
+}

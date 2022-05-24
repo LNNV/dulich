@@ -1,18 +1,26 @@
 package com.dulich.dulich.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dulich.dulich.form.EditForm;
 import com.dulich.dulich.model.Account;
+import com.dulich.dulich.model.Book;
+import com.dulich.dulich.model.Tour;
 import com.dulich.dulich.repository.AccountRepository;
+import com.dulich.dulich.repository.BookRepository;
+import com.dulich.dulich.repository.TourRepository;
 import com.dulich.dulich.service.StoreDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,13 +30,15 @@ public class UserAccountController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private TourRepository tourRepository;
+
 
     @RequestMapping("/user")
     public String edit(@CookieValue(value = "username", defaultValue = "") String username, Model model) {
-        if (username.equals("")) {
-            model.addAttribute("loged", null);
-            return "redirect:login";
-        }
         model.addAttribute("loged", 1);
         model.addAttribute("userimg", Character.toString(Character.toUpperCase(username.charAt(0))));
         model.addAttribute("username", username);
@@ -92,5 +102,26 @@ public class UserAccountController {
         model.addAttribute("userimg", Character.toString(Character.toUpperCase(username.charAt(0))));
         model.addAttribute("username", username);
         return "user-account";
+    }
+
+    @GetMapping("user/booked")
+    public String index(@CookieValue(value = "username", defaultValue = "") String username, Model model) {
+        model.addAttribute("loged", 1);
+        Account account = accountRepository.findByUsername(username).get();
+        List<Book> bookList = bookRepository.findByAccount(account);
+        model.addAttribute("bookList", bookList);
+        model.addAttribute("userimg", Character.toString(Character.toUpperCase(username.charAt(0))));
+        model.addAttribute("username", username);
+        return "order";
+    }
+
+    @PostMapping("/user/booked/{id}/delete")
+    public String remove(@PathVariable(value="id") long id, Model model) {
+        Book book = bookRepository.getById(id);
+        Tour tour = book.getTour();
+        bookRepository.delete(book);
+        tour.setNumseat(tour.getNumseat() + 1);
+        tourRepository.save(tour);
+        return "redirect:/user/booked";
     }
 }
