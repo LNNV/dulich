@@ -46,9 +46,10 @@ public class NewsController {
         News newz = repository.getById(id);
 
         newz.setContent(news.getContent());
+        newz.setPicture(news.getPicture());
         newz.setTopic(news.getTopic());
         newz.setSource(news.getSource());
-        news.setIntro(news.getIntro());
+        newz.setIntro(news.getIntro());
 
         repository.save(newz);
         return "redirect:/admin/news";
@@ -62,4 +63,6 @@ public class NewsController {
 
         return "redirect:/admin/news";
     }
+
+    
 }

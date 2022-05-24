@@ -1,0 +1,139 @@
+:root{
+    --height-header:76px;
+    --margin-top:50px;
+}
+
+/* body{
+    overflow: hidden;
+} */
+
+.about{
+    margin-top: var(--height-header);
+    overflow: hidden;
+}
+.about__tour{
+    width: 100vw;
+    position: relative;
+}
+.about__tour img{
+    width: 100%;
+} 
+
+.about__content{
+    position: absolute;
+    top: 66%;
+    left: 41%;
+    color: white;
+    font-size: 25px;
+
+}
+.about__static{
+    padding: 0 100px;
+    margin: 50px 0;
+}
+.year__static{
+    font-size: 30px;
+    font-weight: 700;
+    color: #2d2c2c;
+    margin-top: -8px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.about__static-infor{
+    margin-top: 22px;
+    color: #929191;
+    line-height: 2;
+    font-weight: 400;
+    padding: 0px 83px;
+    text-align: center;
+}
+.year__data{
+    margin-top: var(--margin-top);
+}
+.year{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 176px;
+    font-size: 27px;
+}  
+.travel__img{
+    width: 45px;
+    height: 45px;
+    margin-right: 16px;
+} 
+.travel__now{
+    display: flex;
+    width: 250px;
+    height: 57px;
+}
+.travel{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0;
+    padding: 0 138px;
+}
+.travel__customer{
+    font-size: 20px;
+}
+.number{
+    width: 50%;
+    height: 2px;
+    background: #e1e1e1;
+    float: left;
+    margin-top: 33px;
+    position: relative;
+}
+.number__line{
+    position: absolute;
+    top: 0;
+    height: 3px;
+}
+.number-infor{
+    color: #929191;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+}
+.work__img{
+    width: 86vw;
+    height: 430px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about__video{
+    position: absolute;
+}
+.work__img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 38px;
+    object-fit: cover;
+}
+.about__sub{
+    margin-top: var(--margin-top);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.about__sub-client{
+    text-align: center;
+}
+.about__sub-client img{
+    height: 80px;
+    width: 80px;
+}
+.about__sub-client p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #9a9999;
+    margin-top: 22px;
+    text-transform: uppercase;
+}
+#n_project,#n_country,#n_reach,#nbr{
+    font-size: 48px;
+    font-weight: 600;
+    color: #2d2c2c;
+    line-height: 1;
+    margin-top: 25px;
+}

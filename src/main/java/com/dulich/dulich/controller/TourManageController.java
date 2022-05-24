@@ -42,7 +42,7 @@ public class TourManageController {
         Tour tour = new Tour();
         tour.setName(tourForm.getName());
         tour.setPicture(tourForm.getPicture());
-        tour.setStartplace(tourForm.getStartplace());
+        tour.setPlace(tourForm.getPlace());
         tour.setDescription(tourForm.getDescription());
         tour.setNumseat(tourForm.getNumseat());
         tour.setCost(tourForm.getCost());
@@ -68,7 +68,7 @@ public class TourManageController {
         Tour tour = tourRepository.findById(id).get();
         tour.setName(tourForm.getName());
         tour.setPicture(tourForm.getPicture());
-        tour.setStartplace(tourForm.getStartplace());
+        tour.setPlace(tourForm.getPlace());
         tour.setDescription(tourForm.getDescription());
         tour.setNumseat(tourForm.getNumseat());
         tour.setCost(tourForm.getCost());

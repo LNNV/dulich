@@ -7,7 +7,7 @@
     <title>Tài khoản</title>
     <link rel="stylesheet" th:href="@{/style/login.css}">
     <link rel="stylesheet" th:href="@{/style/account.css}">
-    <link rel="stylesheet" th:href="@{/style/header.css}">
+    <link rel="stylesheet" th:href="@{style/final/header.css}">
     <link rel="shortcut icon"  th:href="@{/asset/real-icon-header.png}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
@@ -15,23 +15,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-    <header id="header" class="container">
+    <header id="header" >
         <div class="logo__header">BOOKING</div>
         <div class="header__nav">
             <ul class="header__nav-list">
-                <a href="#">
+                <a href="/home">
                     <li class="header__nav-list-item"><span>Home</span></li>
-                </a><a href="#">
-                    <li class="header__nav-list-item"><span>Tour</span></li>
-                </a><a href="#">
+                </a><a href="/home#about-section">
                     <li class="header__nav-list-item"><span>About</span></li>
-                </a><a href="#">
+                </a><a href="/home#news">
                     <li class="header__nav-list-item"><span>News</span></li>
-                </a><a href="#">
-                    <li class="header__nav-list-item"><span>Promo</span></li>
-                </a><a href="#">
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="/home#contact">
                     <li class="header__nav-list-item"><span>Contact</span></li>
-                </a><a href="#">
+                </a><a href="/home#tour-section">
                     <li class="header__nav-list-item">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </li>
@@ -44,25 +42,25 @@
                 <i class="fa-solid fa-user"></i>
             </div>
             <div class="menu__nav">
-                <ul class="menu__nav-list">
+                <ul th:if="${loged}" class="menu__nav-list">
                     <li><a href="/user">
                         <i class="fa-solid fa-user"></i>
                         <span class="list-infor">Tài khoản của tôi</span> 
                     </a></li>
                 </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/odered">
                         <i class="fa-solid fa-list"></i>
                         <span class="list-infor">Đặt chỗ của tôi</span> 
                     </a></li>
                 </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
-                        <i class="fa-solid fa-gift"></i>
-                      <span class="list-infor">Khuyến mãi</span>   
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
                     </a></li>
                 </ul>
-                <ul class="menu__nav-list">
+                <ul th:if="${loged}" class="menu__nav-list">
                     <li><a href="/logout">
                         <i class="fa-solid fa-power-off"></i>
                      <span class="list-infor">Đăng xuất</span>    
@@ -86,9 +84,6 @@
                 </a>
                 <a href="#" class="account__link">
                     <li class="account__list-content">Đặt chỗ của tôi</li>
-                </a>
-                <a href="#" class="account__link">
-                    <li class="account__list-content">Khuyến mãi</li>
                 </a>
                 <a href="/logout" class="account__link">
                     <li class="account__list-content">Đăng xuất</li>

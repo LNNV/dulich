@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+ul{
+    list-style: none;
+}
+.detail{
+    display: flex;
+    padding: 30px 64px;
+    background-color: #f7f9fa;
+    margin-top: 76px;
+}
+.detail__img{
+    height: 100%;
+    width: 93vw;
+}
+.detail__img img{
+    width: 100%;
+    height: 550px;
+}
+.detail__content{
+
+}
+.detail__main p{
+    
+}
+.actor{
+    margin: 15px 0;
+}
+.date-submit{
+    margin-bottom: 15px;
+}
+.actor__people{
+    margin-right: 15px;
+}
+.author-icon{
+    margin-right: 10px;
+    color: #fb998a;
+}
+.header__deatail{
+    width: 660px;
+    margin-left: 60px;
+}
+.price__detail{
+    min-width: 88px;
+    height: 77px;
+    background-color: #ed705d;
+    color: #ffffff;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    line-height: 72px;
+    padding: 0 10px;
+    border: none;
+}
+.price__detail::after{
+    position: absolute;
+    content: "";
+    width: 23px;
+    height: 23px;
+    clip-path: polygon(0 9%, 0% 100%, 100% 100%);
+    background-color: #f7f9fa;
+    bottom: -1px;
+    left: 0;
+}
+.detail__main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.detail__schedule{
+    font-size: 14px;
+    line-height: 1.71429;
+    font-weight: 400; 
+    color: #424141;
+    padding-bottom:20px;
+}
+.detail__infor{
+    font-size: 14px;
+    line-height: 1.71429;
+    font-weight: 400;
+    border-bottom: 1px solid #9b9b9b;  
+    color: #9b9b9b;
+    padding-bottom:28px;
+}
+.detail__city h1{
+    
+}
+.detail__plus{
+    display: flex;
+    margin-top: 30px;
+}
+.detail__plus-icon{
+    width: 220px;
+}
+.detail__plus-icon img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.detail__plus-infor{
+    margin-left: 50px;
+    color: #9b9b9b;
+    font-size: 17px;
+}
+.detail__plus-infor p{
+    margin-bottom: 12px;
+}
+.tour__btn{
+    background-color: #fb998a;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    width: 165px;
+    height: 65px;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Poppins", Arial, sans-serif;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    margin-top: 35px;
+}
+.tour__btn:hover{
+    background-color: #ed705d;
+}
+.detail__plus-infor p i{
+    margin-right: 10px;
+    color: #d73e27;
+}

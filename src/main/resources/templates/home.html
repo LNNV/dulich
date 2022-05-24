@@ -1,16 +1,554 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" th:href="@{/style/login.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="shortcut icon"  th:href="@{/asset/real-icon-header.png}">
-</head>
+    <link rel="stylesheet" th:href="@{style/final/baocao.css}">
+    <link rel="stylesheet" th:href="@{style/final/reset.css}">
+    <link rel="stylesheet" th:href="@{style/final/slider.css}">
+    <link rel="stylesheet" th:href="@{style/final/header.css}">
+    <link rel="stylesheet" th:href="@{style/final/link_about.css}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> -->
+    <title>Booking</title>
 
+    
+    <!--Min.css owl-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon"  th:href="@{asset/img/real-icon-header.png}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
+    </style>
+    
+</head>
 <body>
-    <h1>Home page nè</h1>
+    <header id="header" >
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="#">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="#about-section">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="#news">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="#contact">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="#tour-section">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/odered">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="eclipse">
+        <img class="big-eclipse" th:src="@{asset/img/big-eclipse.svg}" alt="image">
+        <img class="mid-eclipse" th:src="@{asset/img/mid-eclipse.svg}" alt="image">
+    </div>
+    <div class="row slider">
+        <div class="owl-carousel owl-theme">
+            <div class="item mb-4">
+                <div class="card border-0 shadow ">
+                    <div class="travel__main">
+                        <div class="travel__infor"data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                            <div class="discover">
+                                <div class="icon__travel">
+                                    <img th:src="@{asset/img/plane.png}" alt="">
+                                </div>
+                                <span>Discovery</span>
+                            </div>
+                            <h3 class="explore-title">
+                                Khám phá các điểm đến du lịch mà bạn chưa bao giờ đến
+                            </h3>
+                            <p class="place-brief">Đà Lạt – Thiên đường sống ảo cực chất quanh năm muôn hoa đua nở khí hậu mát mẻ tràn ngập cả phố hoa. Thành phố Đà Lạt không chỉ là nơi bình yên nghỉ dưỡng tham quan nổi tiếng. Mà còn là những trải nghiệm đầy sắc màu tươi sáng và ngày càng đổi mới.</p>
+                            <button class="discovery-btn"><a href="tour.html">Discovery</a></button>
+                        </div>
+                        <div class="img-travel"> 
+                            <img th:src="@{asset/img/dalat.jpg}" alt="image" class="card-img1">
+                            <div class="place__name">
+                                <p class="text">ĐÀ LẠT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="item mb-4">
+                <div class="card border-0 shadow ">
+                    <div class="travel__main">
+                        <div class="travel__infor">
+                            <div class="discover">
+                                <div class="icon__travel">
+                                    <img th:src="@{asset/img/plane.png}" alt="">
+                                </div>
+                                <span>Discovery</span>
+                            </div>
+                            <h3 class="explore-title">
+                                Giải pháp du lịch hoàn thiện
+                            </h3>
+                            <p class="place-brief">Là thành phố lớn nhất miền Trung, Đà Nẵng khoác lên mình sự nhộn nhịp và huyên náo của một trung tâm kinh tế - văn hóa lớn nhất khu vực. Được bao bọc bởi biển cả xanh ngát và núi non hùng vĩ, đây là thành phố đáng sống với nhiều thắng cảnh làm say lòng người cùng những giá trị văn hóa độc đáo. Con người Đà Nẵng bình dị, mến khách đã trở thành biểu tượng của mảnh đất này.</p>
+                            <button class="discovery-btn"><a href="tour.html">Discovery</a></button>
+                        </div>
+                        <div class="img-travel"> 
+                            <img th:src="@{asset/img/danang.jpg}" alt="image" class="card-img1">
+                            <div class="place__name">
+                                <p class="text">ĐÀ NẴNG</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="item mb-4">
+                <div class="card border-0 shadow ">
+                    <div class="travel__main">
+                        <div class="travel__infor">
+                            <div class="discover">
+                                <div class="icon__travel">
+                                    <img th:src="@{asset/img/plane.png}" alt="">
+                                </div>
+                                <span>Discovery</span>
+                            </div>
+                            <h3 class="explore-title">
+                                Giá rẻ mỗi ngày. Cung cấp các dịch vụ tiện lợi.
+                            </h3>
+                            <p class="place-brief">Cứ 2 năm một lần, Đại lễ ở Huế được tổ chức giữa tháng Tư và tháng Năm. Lễ hội này thường gồm các buổi hội trình diễn có các nghệ nhân trong vùng và quốc tế đến diễn, và có nhiều lễ hội được tổ chức như Hội Lễ Ngâm thơ Huế rất độc đáo.</p>
+                            <button class="discovery-btn"><a href="tour.html">Discovery</a></button>
+                        </div>
+                        <div class="img-travel"> 
+                            <img th:src="@{asset/img/hue.jpg}" alt="image" class="card-img1">
+                            <div class="place__name">
+                                <p class="text">HUẾ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="item mb-4">
+                <div class="card border-0 shadow ">
+                    <div class="travel__main">
+                        <div class="travel__infor">
+                            <div class="discover">
+                                <div class="icon__travel">
+                                    <img th:src="@{asset/img/plane.png}" alt="">
+                                </div>
+                                <span>Discovery</span>
+                            </div>
+                            <h3 class="explore-title">
+                                Trải nghiệm các dịch vụ hấp dẫn.
+                            </h3>
+                            <p class="place-brief">Thành phố biển Vũng Tàu là điểm du lịch nổi tiếng của Việt Nam, nơi đây có những cung đường biển đẹp như mơ, ngọn Hải đăng cổ nổi tiếng, tượng Chúa giang tay bình yên, những góc phố thơ mộng, cùng những mon hải sản tươi ngon hấp dẫn là những điều mang đến cho du khách kỳ nghỉ tuyệt vời.</p>
+                            <button class="discovery-btn"><a href="tour.html">Discovery</a></button>
+                        </div>
+                        <div class="img-travel"> 
+                            <img th:src="@{asset/img/vungtau6.jpg}" alt="image" class="card-img1">
+                            <div class="place__name">
+                                <p class="text">VŨNG TÀU</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+    <section class="ftco-intro img" id="about-section" th:style="'background-image:url('+@{asset/img/xbg_3.jpg.pagespeed.ic.jjmsrfAMo7.webp}+')'"data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+        <div class="overlay"></div>
+        <div class="container-sub">
+            <div class="row__about justify-content-center">
+                <div class="col-md-9 text-center">
+                    <h2 data-aos="fade-up" data-aos-delay="700" data-aos-duration="500">Thông tin chi tiết về chúng tôi</h2>
+                    <p data-aos="fade-up" data-aos-delay="800" data-aos-duration="500">Vinh quang không phải là không bao giờ thất bại, mà là cách chúng ta đứng dậy sau mỗi lần gục ngã.</p>
+                    <p data-aos="fade-up" data-aos-delay="900" data-aos-duration="500"class="mb-0"><a href="/about" class="btn btn-white">Tìm hiểu</a></p>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <div class="news" id="news"data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+        <div class="title_box">
+            <h2>Tin Tức</h2>
+            <h1>Cung cấp tin tức mới nhất</h1>
+            <p>Đẩy mạnh việc đảm bảo an ninh an toàn cho điểm đến !</p>
+        </div>
+        <div class="container">
+
+            <div class="news__img">
+                <img th:src="@{asset/img/new_img.jpg}" alt="">
+            </div>
+            <div class="news__content" >
+                <div class="news__cover"data-aos="fade-up-left" data-aos-delay="500" data-aos-duration="700">
+                    <h3>Làm mới, ra mắt thêm nhiều sản phẩm, dịch vụ. </h3>
+                    <h1>Những tin tức thú vị nhất</h1>
+                    <p>Đẩy mạnh việc đảm bảo an ninh an toàn cho điểm đến, đồng thời ban hành kế hoạch xúc tiến quảng bá thu hút khách du lịch trong nước và quốc tế. Thành phố đã tổ chức đón các chuyến bay đầu tiên, triển khai phố đêm Mỹ An, phố đi bộ An Thượng, khai trương tuyến tàu biển Đà Nẵng đi Lý Sơn...</p>
+                    <p>Trở lại nhộn nhịp, thành phố đang thúc đẩy xây dựng các sản phẩm du lịch mới và làm mới các sản phẩm du lịch đã có. Điển hình như việc làm mới các hoạt động của mùa du lịch biển để tăng trải nghiệm cho du khách, tạo thêm điểm vui chơi giải trí về đêm như phố du lịch.</p>
+                    <btn class="news__btn">
+                        <a href="/news" class="btn btn-white">Xem thêm</a>
+                    </btn>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="service">
+        <div class="container">
+            <div class="title_box">
+                <h2>Service</h2>
+                <h1>Best service for everyone</h1>
+                <p>We promise to give you the best service we have !</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="service_item"data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">
+                <div class="sv_icon">
+                    <div class="icon_cover">
+                        <i class="fa-solid fa-otter"></i>
+                    </div>
+                    
+                </div>
+                <p href="#">Activities</p>
+            </div>
+            <div class="service_item"data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">                
+                <div class="sv_icon">
+                    <div class="icon_cover">
+                        <i class="fa-brands fa-cc-visa"></i>
+                    </div>
+                </div>
+                <p href="#">Visa Service</p>
+            </div>
+            <div class="service_item"data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">
+                <div class="sv_icon">
+                    <div class="icon_cover">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                </div>                
+                <p href="#">Good Restaurant</p>
+            </div>
+            <div class="service_item"data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
+                <div class="sv_icon">
+                    <div class="icon_cover">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                </div>                
+                <p href="#">5 Star Hotel</p>
+            </div>
+            <div class="service_item"data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">
+                <div class="sv_icon">
+                    <div class="icon_cover">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                </div>
+                
+                <p href="#">Rent Transportations</p>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-intro img" id="tour-section" th:style="'background-image:url('+@{asset/img/booking_tour_img.webp}+')'" data-aos="fade-up" data-aos-delay="800" data-aos-duration="500">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 text-center">
+                    <h2>Tìm và đặt Tour theo nhu cầu của bạn</h2>
+                    <p>Cuộc sống thu hẹp hay mở rộng tùy thuộc vào lòng dũng cảm của con người..</p>
+                    <p class="mb-0"><a href="/tours" class="btn btn-white">Đặt tour</a></p>
+                </div>
+            </div>
+        </div>
+    </section>   
+    
+    <div class="contact" id="contact">
+        <div class="container">
+            <div class="title_box">
+                <h2>Contact</h2>
+                <h1>Contact information</h1>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+            </div>
+            <div class="contact_details">
+                <div class="row ct_row1">
+                    <div class="detail"data-aos="fade-right" data-aos-delay="500" data-aos-duration="600">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="info">
+                            <h3>Address</h3>
+                            <p>97 ManThien Street, ThuDuc City</p>
+                        </div>
+                    </div>
+                    <div class="detail"data-aos="fade-right" data-aos-delay="600" data-aos-duration="600">
+                        <div class="icon">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                        <div class="info">
+                            <h3>Email</h3>
+                            <p>abc@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="detail"data-aos="fade-right" data-aos-delay="700" data-aos-duration="600">
+                        <div class="icon">
+                            <i class="fa-solid fa-earth-asia"></i>
+                        </div>
+                        <div class="info">
+                            <h3>Website</h3>
+                            <p>booking.com</p>
+                        </div>
+                    </div>
+                    <div class="detail" style="margin-bottom: 0px;"data-aos="fade-right" data-aos-delay="800" data-aos-duration="600">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="info">
+                            <h3>Number</h3>
+                            <p>+ 84 2355 98</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ct_row2"style="padding: 113px 0;"data-aos="fade-left" data-aos-delay="800" data-aos-duration="600">
+                    
+                    <div class="message__text">
+                        <div class="details dt_ms">
+                            <i class="fa-solid fa-pen"></i>
+                            <textarea name="" id=""  placeholder="Góp ý..."></textarea>
+                            <!-- <input type="textarea" placeholder="Message"> -->
+                        </div>
+                    </div>
+                    <div class="contact_btn" >
+                        <a href="#">Send Message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="wrapper">
+        <div class="wrapper_item wp_item1"data-aos="fade-up-right" data-aos-delay="500" data-aos-duration="600">
+            <img th:src="@{asset/img/wp1.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+        <div class="wrapper_item wp_item2"data-aos="fade-up-right" data-aos-delay="550" data-aos-duration="600">
+            <img th:src="@{asset/img/wp2.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+        <div class="wrapper_item wp_item3"data-aos="fade-up-right" data-aos-delay="600" data-aos-duration="600">
+            <img th:src="@{asset/img/wp3.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+        <div class="wrapper_item wp_item4"data-aos="fade-up-right" data-aos-delay="700" data-aos-duration="600">
+            <img th:src="@{asset/img/wp4.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+        <div class="wrapper_item wp_item5"data-aos="fade-up-right" data-aos-delay="750" data-aos-duration="600">
+            <img th:src="@{asset/img/wp5.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+        <div class="wrapper_item wp_item6"data-aos="fade-up-right" data-aos-delay="800" data-aos-duration="600">
+            <img th:src="@{asset/img/wp6.jpg}" alt="">
+            <span href="#"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+    </div>     
+    <div class="gallery">
+        <div class="gallery_close">   
+                
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="gallery_img">
+            <img th:src="@{/asset/img/wp1.jpg}" alt="">
+        </div>
+        <div class="gallery_prev">
+            <i class="fa-solid fa-angle-left"></i>
+        </div>
+        <div class="gallery_next">
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
+        
+    </div>
+    <div class="ggmap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5116159590793!2d106.7856918!3d10.848637499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752713216a3adf%3A0xf8b22853eea72777!2zOTcgxJAuIE1hbiBUaGnhu4duLCBIaeG7h3AgUGjDuiwgUXXhuq1uIDksIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1652608499358!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+    <!--Jquery cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--owl min.js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--init owl set up-->
+    <script>
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    autoplay:true,
+    autoplayTimeout:3000,
+    responsive:{
+        0:{
+            items:1
+        },
+        60:{
+            items:1
+        },
+        100:{
+            items:1
+        },
+        
+        
+    }
+})
+    </script>
+    
+    <script th:src="@{/script/web.js}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </body>
+
 </html>

@@ -89,16 +89,13 @@
         <div class="logo__header">BOOKING</div>
         <div class="header__nav">
             <ul class="header__nav-list">
-                <a href="#">
-                    <li class="header__nav-list-item"><span>Home</span></li>
-                </a>
                 <a href="/admin/account">
                     <li class="header__nav-list-item"><span>Khách hàng</span></li>
                 </a>
                 <a href="/admin/tour">
                     <li class="header__nav-list-item"><span>Tour</span></li>
                 </a>
-                <a href="/admin/booking">
+                <a href="/admin/book">
                     <li class="header__nav-list-item"><span>Đặt Tour</span></li>
                 </a>
                 <a href="/admin/news">
@@ -113,31 +110,9 @@
             </div>
             <div class="menu__nav">
                 <ul class="menu__nav-list">
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-user"></i>
-                            <span class="list-infor">Tài khoản </span> 
-                        </a>
-                    </li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-list"></i>
-                            <span class="list-infor">Đặt Tour </span> 
-                        </a>
-                    </li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
-                        <i class="fa-solid fa-gift"></i>
-                      <span class="list-infor">Khuyến mãi</span>   
-                    </a></li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
-                        <i class="fa-solid fa-power-off"></i>
-                     <span class="list-infor">Đăng xuất</span>    
+                    <li><a href="/logout">
+                        <i style="color: black;" class="fa-solid fa-power-off"></i>
+                     <span class="list-infor" style="color: black;">Đăng xuất</span>    
                     </a></li>
                 </ul>
             </div>
@@ -154,7 +129,7 @@
         </div>
         <div class="search_act_box">
             <div class="container">
-                <div class="cover_act_box">
+                <!--<div class="cover_act_box">
                     <div class="act_box">
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Sắp xếp theo nơi khởi hành</option>
@@ -162,7 +137,7 @@
                             <option value="1">Sắp xếp giá</option>                       
                         </select>
                     </div>
-                </div>
+                </div>-->
                 
                 <div class="search_box">
                     <nav class="navbar navbar-light bg-light">
@@ -205,7 +180,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Nơi khởi hành</span>
-                                    <input th:name="startplace" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input th:name="place" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Mô tả</span>
@@ -264,7 +239,7 @@
                                 <td th:text="${item.picture}"></td>
                                 <td th:text="${#dates.format(item.startday, 'dd-MM-yyyy')}"></td>
                                 <td th:text="${#dates.format(item.endday, 'dd-MM-yyyy')}"></td>
-                                <td th:text="${item.startplace}"></td>
+                                <td th:text="${item.place}"></td>
                                 <td th:text="${item.description}"></td>
                                 <td th:text="${item.numseat}"></td>
                                 <td th:text="${item.cost} + ' VNĐ'"></td>
@@ -304,7 +279,7 @@
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text" id="inputGroup-sizing-default">Nơi khởi hành</span>
-                                                            <input th:name="startplace" th:value="${item.startplace}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                            <input th:name="place" th:value="${item.place}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                                         </div>
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text" id="inputGroup-sizing-default">Mô tả</span>

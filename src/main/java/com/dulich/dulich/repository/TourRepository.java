@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface TourRepository extends JpaRepository<Tour, Long> {
-    @Query(value = "SELECT * FROM Tour WHERE Tour.startplace LIKE %:keyword%", nativeQuery = true)
+    @Query(value = "SELECT * FROM Tour WHERE Tour.place LIKE %:keyword%", nativeQuery = true)
     List<Tour> findByKeyword(@Param("keyword") String keyword);
 }

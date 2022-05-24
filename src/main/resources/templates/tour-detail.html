@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="shortcut icon"  th:href="@{asset/img/real-icon-header.png}">
+    <link rel="stylesheet" th:href="@{/style/final/baocao.css}">
+    <link rel="stylesheet" th:href="@{/style/final/tour-detail.css}">
+    <link rel="stylesheet" th:href="@{/style/final/header.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header id="header" >
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="/home">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="/home#about-section">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="/home#news">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="/home#contact">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/odered">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="detail">
+        <div class="detail__img">
+            <img th:src="${picture}" alt="Da Lat">
+        </div>
+        <div class="detail__content">
+            <div class="header__deatail">
+                <div class="detail__main">
+                    <div class="detail__city"><h1 th:text="${name}"></h1></div>
+                    <div class="price__detail"><span th:text="${#numbers.formatInteger(cost, 3, 'POINT')}"></span>&nbsp;VNĐ</div>
+                </div>
+                <div class="detail__schedule">
+                    <span class="date-start" th:text="${#dates.format(startday, 'dd-MM-yyyy')}"></span> đến <span class="date-end" th:text="${#dates.format(endday, 'dd-MM-yyyy')}"></span><br>
+                    <small>Còn&nbsp;<span th:text="${numseat}"></span>&nbsp;chỗ</small>
+                </div>
+                <div class="detail__infor" th:text="${description}">
+                    
+                </div>
+                <div class="detail__plus">
+                    <div class="detail__plus-icon">
+                        <img th:src="@{/asset/img/like.gif}" alt="">
+                    </div>
+                    <div class="detail__plus-infor">
+                        <p><i class="fa-solid fa-check"></i><span th:text="'Địa điểm: ' + ${place}"></span></p>
+                        <p><i class="fa-solid fa-check"></i>Chỗ nghỉ Du lịch bền vững</p>
+                        <p><i class="fa-solid fa-check"></i>Miễn phí hủy</p>
+                        <p><i class="fa-solid fa-check"></i>Tiện ích</p>
+                        <p><i class="fa-solid fa-check"></i>Ban công</p>
+                    </div>
+                    
+                </div>
+                <button class="tour__btn" type="submit">Đặt vé</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+</body>
+</html>

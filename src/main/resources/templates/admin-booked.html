@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/style/admin.css}" />
+    <link rel="stylesheet" th:href="@{/style/reset.css}" />
+    <link rel="stylesheet" th:href="@{/style/header-admin.css}" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> -->
+    <title>Booking</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/53a42bcb20.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!--Min.css owl-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap");
+    </style>
+  </head>
+  <body>
+    <header id="header">
+        
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="/admin/account">
+                    <li class="header__nav-list-item"><span>Khách hàng</span></li>
+                </a>
+                <a href="/admin/tour">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a>
+                <a href="/admin/book">
+                    <li class="header__nav-list-item"><span>Đặt Tour</span></li>
+                </a>
+                <a href="/admin/news">
+                    <li class="header__nav-list-item"><span>Tin tức</span></li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i style="color: black;" class="fa-solid fa-power-off"></i>
+                     <span class="list-infor" style="color: black;">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="booking_box">
+        <div class="add_sum_box">
+            <div class="container">
+                <div class="sum_box">
+                    <h1>Đặt Tour</h1>
+                </div>
+                
+            </div>
+        </div>
+        <div class="search_act_box">
+            <div class="container">
+                <!--<div class="cover_act_box">
+                    <div class="act_box">
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>Sắp xếp theo tổng tiền</option>
+                            <option value="1">Sắp xếp theo hình thức thanh toán</option> 
+                        </select>
+                    </div>
+                </div>-->
+                
+                <div class="search_box">
+                    <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </nav>
+                </div>
+                <!--<div class="add_btn_box">
+                    <Button trigger modal>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal31">
+                        Thêm đơn Tour
+                    </button>            
+                    <Modal>
+                    <div class="modal fade" id="exampleModal31" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Tạo đơn mới</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã Booking</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã Tour</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mã khách hàng</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Tổng tiền</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Hình thức thanh toán</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                            <button type="button" class="btn btn-primary">Lưu</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+        <div class="custommer_box">
+            <div class="container">
+                <!-- Table  -->
+                <table class="table table-bordered">
+                    <!-- Table head -->
+                    <thead>
+                    <tr>
+                        
+                        <th>Mã Book</th>
+                        <th>Mã Tour</th>
+                        <th>Mã khách hàng</th>
+                        <th>Ngày đặt</th>
+                        <th>Hình thức thanh toán</th>
+                        <th>Giá</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                    </thead>
+                    <!-- Table head -->
+                
+                    <!-- Table body -->
+                    <tbody>
+                        <th:block th:each="item : ${bookList}">
+                            <tr>
+                                
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.tour.id}"></td>
+                                <td th:text="${item.account.id}"></td>
+                                <td th:text="${item.bookat}"></td>
+                                <td th:text="${item.payment}"></td>
+                                <td th:text="${item.tour.cost}"></td>
+                                <td class="change_remove_btns">
+                                    
+                                    <div class="remove_btn_box">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target=${'#exampleModal33-'+item.id}">
+                                            Xoá
+                                        </button>                                
+                                        <!-- Modal -->
+                                        <div class="modal fade" th:attr="id= ${'exampleModal33-'+item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Xoá đơn ?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                                                <form th:action="@{/admin/book/__${item.id}__/delete}" method="post">
+                                                    <button type="submit" class="btn btn-primary">Xoá</button>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                    <!-- Table body -->
+                </table>
+                    <!-- Table  -->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+  </body>
+</html>

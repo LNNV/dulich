@@ -1,20 +1,20 @@
 package com.dulich.dulich.controller;
 
-import com.dulich.dulich.service.StoreDataService;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LogoutController {
     
-    @Autowired
-    private StoreDataService storeDataService;
-
     @RequestMapping("/logout")
-    public String logout() {
-        storeDataService.logOut();
+    public String logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("username", "");
+        response.addCookie(cookie);
+        cookie = new Cookie("role", "");
+        response.addCookie(cookie);
         return "redirect:login";
     }
 }

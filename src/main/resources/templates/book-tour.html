@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style/final/booking.css}">
+    <link rel="stylesheet" th:href="@{/style/final/booking_plus.css}">
+    <link rel="stylesheet" th:href="@{/style/final/reset.css}">
+    <link rel="stylesheet" th:href="@{/style/final/header.css}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./header (1).css">
+    <link rel="stylesheet" href="./booking (1).css">
+    <link rel="stylesheet" href="./booking_plus.css">
+    <title>Booking</title>
+
+    
+    <!--Min.css owl-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon"  th:href="@{asset/img/real-icon-header.png}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
+    </style>
+    
+</head>
+<body>
+    <header id="header" >
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="/home">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="/home#about-section">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="/home#news">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="/home#contact">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/odered">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <div class="booking_bill"> 
+        <div class="container">
+            <div class="header_bill">
+                <img th:src="${picture}" alt="">
+                <div class="header_bill_box">
+                    <h1 id="tour_name" th:text="${name}"></h1>
+                    <div class="header_bill_detail">
+                        <div class="header_bill_tag">
+                            <p >Mã tour:</p>
+                            <p >Thời gian bắt đầu:</p>
+                            <p >Thời gian kết thúc:</p>
+                            <p >Địa điểm:</p>
+                            <p>Số chỗ còn lại:</p>
+                            <p>Giá:</p>
+                        </div>
+                        <div class="header_bill_value">
+                            <p th:text="${idtour}"></p>
+                            <p th:text="${#dates.format(startday, 'dd-MM-yyyy')}"></p>
+                            <p th:text="${#dates.format(endday, 'dd-MM-yyyy')}"></p>
+                            <p th:text="${place}"></p>
+                            <p th:text="${numseat}"></p>
+                            <p th:text="${#numbers.formatInteger(cost, 3, 'POINT')} + 'VNĐ'"></p>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="footer_bill">
+                <div class="container">
+                    <div class="title_box">
+                        <h1>Thanh toán</h1>
+                    </div>
+                    <form th:action="@{/tour/book/__${idtour}__}" method="post">
+                        <div class="input-group mb-3" >
+                            <div class="input-group-prepend" >
+                                <label class="input-group-text" for="inputGroupSelect01">Hình thức thanh toán</label>
+                            </div>
+                            <select th:name="payment" class="custom-select" id="inputGroupSelect01" style="width: 84%;">
+                                <option th:value="cash" selected>Thanh toán trực tiếp tại cửa hàng</option>
+                                <option th:value="banking">Thanh toán qua chuyển khoản ngân hàng</option>
+                                <option th:value="momo">Thanh toán bằng ví MoMo</option>
+                                <option th:value="vnpay">Thanh toán qua ví VNPay</option>
+                            </select>
+                        </div>
+                        <button type="sumit" class="btn_book_tour">Đặt vé</button>
+                    </form>
+                </div>
+            </div>                
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+</body>

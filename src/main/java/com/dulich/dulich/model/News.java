@@ -30,6 +30,10 @@ public class News {
     @Nationalized 
     private String content;
 
+    @Column(name = "picture", nullable = false)
+    @Nationalized 
+    private String picture;
+
     @Column(name = "source", nullable = false)
     @Nationalized 
     private String source;

@@ -89,16 +89,13 @@
         <div class="logo__header">BOOKING</div>
         <div class="header__nav">
             <ul class="header__nav-list">
-                <a href="#">
-                    <li class="header__nav-list-item"><span>Home</span></li>
-                </a>
                 <a href="/admin/account">
                     <li class="header__nav-list-item"><span>Khách hàng</span></li>
                 </a>
                 <a href="/admin/tour">
                     <li class="header__nav-list-item"><span>Tour</span></li>
                 </a>
-                <a href="/admin/booking">
+                <a href="/admin/book">
                     <li class="header__nav-list-item"><span>Đặt Tour</span></li>
                 </a>
                 <a href="/admin/news">
@@ -113,31 +110,9 @@
             </div>
             <div class="menu__nav">
                 <ul class="menu__nav-list">
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-user"></i>
-                            <span class="list-infor">Tài khoản </span> 
-                        </a>
-                    </li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-list"></i>
-                            <span class="list-infor">Đặt Tour </span> 
-                        </a>
-                    </li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
-                        <i class="fa-solid fa-gift"></i>
-                      <span class="list-infor">Khuyến mãi</span>   
-                    </a></li>
-                </ul>
-                <ul class="menu__nav-list">
-                    <li><a href="#">
-                        <i class="fa-solid fa-power-off"></i>
-                     <span class="list-infor">Đăng xuất</span>    
+                    <li><a href="/logout">
+                        <i style="color: black;" class="fa-solid fa-power-off"></i>
+                     <span class="list-infor" style="color: black;">Đăng xuất</span>    
                     </a></li>
                 </ul>
             </div>
@@ -154,14 +129,14 @@
         </div>
         <div class="search_act_box">
             <div class="container">
-                <div class="cover_act_box">
+                <!--<div class="cover_act_box">
                     <div class="act_box">
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Sắp xếp theo ID</option>
                             <option value="1">Sắp xếp theo tên</option>                        
                         </select>
                     </div>
-                </div>
+                </div>-->
                 
                 <div class="search_box">
                     <nav class="navbar navbar-light bg-light">
@@ -171,12 +146,12 @@
                         </form>
                     </nav>
                 </div>
-                <div class="add_btn_box">
-                    <!-- Button trigger modal -->
+                <!--<div class="add_btn_box">
+                    <Button trigger modal>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Thêm khách hàng
                     </button>            
-                    <!-- Modal -->
+                    <Modal>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
@@ -213,7 +188,7 @@
                         </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 
             </div>
         </div>

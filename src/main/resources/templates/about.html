@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" th:href="@{/style/final/header.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/style/final/about.css}">
+    <link rel="stylesheet" th:href="@{/style/final/baocao.css}">
+    <link rel="shortcut icon"  th:href="@{/asset/img/real-icon-header.png}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body  id="abc">
+    <header id="header" >
+        <div class="logo__header">BOOKING</div>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <a href="/home">
+                    <li class="header__nav-list-item"><span>Home</span></li>
+                </a><a href="/home#about-section">
+                    <li class="header__nav-list-item"><span>About</span></li>
+                </a><a href="/home#news">
+                    <li class="header__nav-list-item"><span>News</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item"><span>Tour</span></li>
+                </a><a href="/home#contact">
+                    <li class="header__nav-list-item"><span>Contact</span></li>
+                </a><a href="/home#tour-section">
+                    <li class="header__nav-list-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        
+        <div class="user__main">
+            <div class="user__login">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="menu__nav">
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="list-infor">Tài khoản của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/user/odered">
+                        <i class="fa-solid fa-list"></i>
+                        <span class="list-infor">Đặt chỗ của tôi</span> 
+                    </a></li>
+                </ul>
+                <ul th:unless="${loged}" class="menu__nav-list">
+                    <li><a href="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                     <span class="list-infor">Đăng nhập</span>    
+                    </a></li>
+                </ul>
+                <ul th:if="${loged}" class="menu__nav-list">
+                    <li><a href="/logout">
+                        <i class="fa-solid fa-power-off"></i>
+                     <span class="list-infor">Đăng xuất</span>    
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="about">
+        <div class="about__tour">
+            <img th:src="@{asset/img/about_img1.png}" alt="">
+            <div class="about__content">
+                <h1>ABOUT US</h1>
+            </div>
+        </div>
+        <div class="about__static" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000"
+        >
+            <h2 class="year__static">YEARS STATISTICS</h2>
+            <p class="about__static-infor">
+                Lượng khách quốc tế đến Việt Nam trong tháng 8/2021 ước đạt 1.512.447 lượt, tăng 14,9% so với tháng 07/2019 và tăng 14,3% so với cùng kỳ năm 2020. Tính chung 8 tháng năm 2021 ước đạt 11.309.232 lượt khách, tăng 8,7% so với cùng kỳ năm 2018
+            </p>
+            <div class="year__data">
+                <div class="year">
+                    <div class="year-start">2020</div>
+                    <div class="year-end">2021</div>
+                </div>
+                <div class="travel">
+                    <div class="travel__now">
+                        <img class="travel__img" th:src="@{asset/img/about_travel.png}" alt="">
+                        <div class="travel__customer">
+                            <h3>1980</h3>
+                            <p>Khách hàng</p>
+                        </div>
+                    </div>
+                    <div class="number">
+                        <div class="number__line" style="left: 50%; width: 50%; background: rgb(49, 18, 75);"></div>
+                       <div class="number-infor">+115%</div>
+                    </div>              
+                    <div class="travel__now"style="justify-content: flex-end;margin-left: 16px;">
+                        <div class="travel__customer" style="margin-right: 16px;text-align: right;">
+                            <h3>3280</h3>
+                            <p>Khách hàng</p>
+                        </div>
+                        <img class="travel__img" th:src="@{asset/img/about_travel.png}" alt="">
+                    </div>
+                </div>
+                <div class="travel">
+                    <div class="travel__now">
+                        <img class="travel__img" th:src="@{asset/img/beach.png}" alt="">
+                        <div class="travel__customer">
+                            <h3>1980</h3>
+                            <p>Lượt khách trở lại</p>
+                        </div>
+                    </div>
+                    <div class="number">
+                        <div class="number__line" style="right: 50%; width: 40.5%; background: rgb(169, 92, 228);"></div>
+                       <div class="number-infor">-81%</div>
+                    </div>              
+                    <div class="travel__now"style="justify-content: flex-end;margin-left: 16px;">
+                        <div class="travel__customer" style="margin-right: 16px;text-align: right;">
+                            <h3>3280</h3>
+                            <p>Lượt khách trở lại</p>
+                        </div>
+                        <img class="travel__img" th:src="@{asset/img/beach.png}" alt="">
+                    </div>
+                </div>
+                <div class="travel">
+                    <div class="travel__now">
+                        <img class="travel__img" th:src="@{asset/img/travel-luggage.png}" alt="">
+                        <div class="travel__customer">
+                            <h3>1980</h3>
+                            <p>Điểm đến</p>
+                        </div>
+                    </div>
+                    <div class="number">
+                        <div class="number__line" style="right: 50%; width: 9.5%; background: rgb(250, 111, 27);"></div>
+                       <div class="number-infor">-19%</div>
+                    </div>              
+                    <div class="travel__now"style="justify-content: flex-end;margin-left: 16px;">
+                        <div class="travel__customer" style="margin-right: 16px;text-align: right;">
+                            <h3>3280</h3>
+                            <p>Điểm đến</p>
+                        </div>
+                        <img class="travel__img" th:src="@{asset/img/travel-luggage.png}" alt="">
+                    </div>
+                </div>
+                <div class="travel">
+                    <div class="travel__now">
+                        <img class="travel__img" th:src="@{asset/img/real-icon-header.png}" alt="">
+                        <div class="travel__customer">
+                            <h3>1980</h3>
+                            <p>Dịch vụ</p>
+                        </div>
+                    </div>
+                    <div class="number">
+                        <div class="number__line" style="left: 50%; width: 50%; background: rgb(250, 158, 27);"></div>
+                       <div class="number-infor">+367%</div>
+                    </div>              
+                    <div class="travel__now"style="justify-content: flex-end;margin-left: 16px;">
+                        <div class="travel__customer" style="margin-right: 16px;text-align: right;">
+                            <h3>3280</h3>
+                            <p>Dịch vụ</p>
+                        </div>
+                        <img class="travel__img" th:src="@{asset/img/real-icon-header.png}" alt="">
+                    </div>
+                </div>
+        </div>
+        <div class="work__img">
+            <img th:src="@{asset/img/img_video_about.jpg}" alt="">
+            <div class="about__video">
+                <video controls th:src="@{asset/video/vietnam.mp4}" width="620" height="350px" type="video/mp4" ></video>
+            </div>
+        </div>
+        <div class="about__sub"data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+            <div class="about__sub-client">
+                <img th:src="@{asset/img/social-care.gif}" alt="">
+                <h3 id="nbr">255</h3>
+                <p>Khách Hàng</p>
+            </div>
+            <div class="about__sub-client">
+                <img th:src="@{asset/img/target.gif}" alt="">
+                <h3 id="n_project">408</h3>
+                <p>Dự án</p>
+            </div>
+            <div class="about__sub-client">
+                <img th:src="@{asset/img/airplan.gif}" alt="">
+                <h3 id="n_country">15</h3>
+                <p>Đất Nước</p>
+            </div>
+            <div class="about__sub-client">
+                <img th:src="@{asset/img/award.gif}" alt="">
+                <h3 id="n_reach">712</h3>
+                <p>Tiếp Cận</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="ft_row ft_row1">
+                <div class="ft_heading">
+                    <h1>About <a>Booking.com</a></h1>
+                </div>
+                <div class="ft_content">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                </div>
+                <div class="ft_icon">
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Information</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Online Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>General Enquiry</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Booking</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Refund Policy</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Call Us</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row2">
+                <div class="ft_heading">
+                    <h1>Exprience</h1>
+                </div>
+                <div class="ft_content">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Hotel and Restaurant</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Beach</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Nature</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Camping</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-right-long"></i>Party</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="ft_row ft_row3">
+                <div class="ft_heading">
+                    <h1>Have a Question?</h1>
+                </div>
+                <div class="ft_content">
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>97 ManThien Street, ThuDuc city</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+ 84 2355 98</p>
+                    </div>
+                    <div class="ft_infor">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>abc@gmail.com</p>
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <div class="ncp">
+            Copyright ©2022 All rights reserved | This template is made with <i class="fa-solid fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+        
+    </div>
+</body>
+<script th:src="@{/script/about.js}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</html>

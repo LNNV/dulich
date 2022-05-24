@@ -31,9 +31,9 @@ public class Tour {
     @Column(name = "endday", nullable = false, columnDefinition = "DATE")
     private Date endday;
 
-    @Column(name = "startplace", nullable = false)
+    @Column(name = "place", nullable = false)
     @Nationalized 
-    private String startplace;
+    private String place;
 
     @Column(name = "description", nullable = false)
     @Nationalized 
@@ -43,5 +43,5 @@ public class Tour {
     private long numseat;
 
     @Column(name = "cost", nullable = false)
-    private double cost;
+    private long cost;
 }

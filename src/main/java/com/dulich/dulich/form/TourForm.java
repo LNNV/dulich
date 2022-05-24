@@ -9,9 +9,9 @@ public class TourForm {
     private String picture;
     private String startday;
     private String endday;
-    private String startplace;
+    private String place;
     private String description;
     private long numseat;
-    private double cost;
+    private long cost;
 
 }
