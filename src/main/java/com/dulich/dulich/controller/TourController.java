@@ -1,6 +1,8 @@
 package com.dulich.dulich.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +77,17 @@ public class TourController {
         model.addAttribute("numseat", tour.getNumseat());
         model.addAttribute("idtour", tour.getId());
         model.addAttribute("place", tour.getPlace());
+        if (tour.getNumseat() == 0) {
+            model.addAttribute("condition", 0);
+            model.addAttribute("numError", "Tour đã hết chỗ");
+            return "book-tour";
+        }
+        if (tour.getStartday().before(new Date())) {
+            model.addAttribute("condition", 0);
+            model.addAttribute("dateError", "Tour đã quá hạn");
+            return "book-tour";
+        }
+        model.addAttribute("condition", 1);
         return "book-tour";
     }
 

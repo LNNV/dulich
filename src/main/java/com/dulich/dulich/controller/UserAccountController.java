@@ -12,7 +12,6 @@ import com.dulich.dulich.model.Tour;
 import com.dulich.dulich.repository.AccountRepository;
 import com.dulich.dulich.repository.BookRepository;
 import com.dulich.dulich.repository.TourRepository;
-import com.dulich.dulich.service.StoreDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,11 +37,19 @@ public class UserAccountController {
 
 
     @RequestMapping("/user")
-    public String edit(@CookieValue(value = "username", defaultValue = "") String username, Model model) {
+    public String edit(@CookieValue(value = "username", defaultValue = "") String username, @ModelAttribute EditForm editForm, Model model) {
         model.addAttribute("loged", 1);
         model.addAttribute("userimg", Character.toString(Character.toUpperCase(username.charAt(0))));
         model.addAttribute("username", username);
-        model.addAttribute("editForm", new EditForm());
+        Account account = accountRepository.findByUsername(username).get();
+        editForm = new EditForm();
+        editForm.setUsername(username);
+        editForm.setPassword(account.getPass());
+        editForm.setRePassword("");
+        editForm.setFullName(account.getFullname());
+        editForm.setPhone(account.getPhone());
+        editForm.setEmail(account.getEmail());
+        model.addAttribute("editForm", editForm);
         return "user-account";
     }
 

@@ -15,6 +15,6 @@ public class LogoutController {
         response.addCookie(cookie);
         cookie = new Cookie("role", "");
         response.addCookie(cookie);
-        return "redirect:login";
+        return "redirect:home";
     }
 }

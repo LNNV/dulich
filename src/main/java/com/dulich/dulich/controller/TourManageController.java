@@ -97,7 +97,7 @@ public class TourManageController {
     @PostMapping("/admin/tour/{id}/delete")
     public String delete(@PathVariable(value="id") long id, @ModelAttribute Tour tour, Model model) {
         Tour temp = tourRepository.getById(id);
-        List<Book> books = bookRepository.findByTour(tour);
+        List<Book> books = bookRepository.findByTour(temp);
         if (books.size() > 0) {
             for (Book book : books) {
                 bookRepository.delete(book);

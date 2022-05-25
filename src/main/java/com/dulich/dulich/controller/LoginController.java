@@ -10,7 +10,6 @@ import com.dulich.dulich.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +22,7 @@ public class LoginController {
 
     
     @RequestMapping("/login")
-    public String login(@CookieValue(value = "username", defaultValue = "") String username, Model model) {
-        if (!username.equals("")) return "redirect:user";
+    public String login(Model model) {
         model.addAttribute("loginForm", new LoginForm());
         return "login";
     }

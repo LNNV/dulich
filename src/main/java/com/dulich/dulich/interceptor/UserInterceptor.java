@@ -10,8 +10,16 @@ public class UserInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // System.out.println("ZOOOOOOOOOOOOOOOOOOOO");
+        // if (request.getCookies().equals(null)) {
+        //     return true;
+        // }
+        
         Cookie [] cookies = request.getCookies();
         String role = "";
+        if (cookies == null) {
+            return true;
+        }
         for (Cookie cookie : cookies)
             if (cookie.getName().equals("role"))
                 role = cookie.getValue();

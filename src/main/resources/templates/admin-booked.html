@@ -34,7 +34,7 @@
     />
     <!-- <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> -->
-    <title>Booked Manage</title>
+    <title>Quản lý vé</title>
     <link rel="shortcut icon"  th:href="@{/asset/img/real-icon-header.png}">
 
     <link
@@ -104,6 +104,9 @@
                 </a>
                 <a href="/admin/feedback">
                     <li class="header__nav-list-item"><span>Phản hồi</span></li>
+                </a>
+                <a href="/admin/revenue">
+                    <li class="header__nav-list-item"><span>Doanh thu</span></li>
                 </a>
             </ul>
         </div>
@@ -204,9 +207,9 @@
                     <thead>
                     <tr>
                         
-                        <th>Mã Book</th>
-                        <th>Mã Tour</th>
-                        <th>Mã khách hàng</th>
+                        <th>Mã Vé</th>
+                        <th>Tên tài khoản</th>
+                        <th>Tên tour</th>
                         <th>Ngày đặt</th>
                         <th>Hình thức thanh toán</th>
                         <th>Giá</th>
@@ -221,11 +224,11 @@
                             <tr>
                                 
                                 <td th:text="${item.id}"></td>
-                                <td th:text="${item.tour.id}"></td>
-                                <td th:text="${item.account.id}"></td>
+                                <td th:text="${item.account.username}"></td>
+                                <td th:text="${item.tour.name}"></td>
                                 <td th:text="${item.bookat}"></td>
                                 <td th:text="${item.payment}"></td>
-                                <td th:text="${item.tour.cost}"></td>
+                                <td th:text="${#numbers.formatInteger(item.tour.cost, 3, 'POINT')} + 'VNĐ'"></td>
                                 <td class="change_remove_btns">
                                     
                                     <div class="remove_btn_box">

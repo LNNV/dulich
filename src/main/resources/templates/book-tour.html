@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon"  th:href="@{asset/img/real-icon-header.png}">
+    <link rel="shortcut icon"  th:href="@{/asset/img/real-icon-header.png}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,500;1,700&display=swap');
     </style>
@@ -102,6 +102,8 @@
                             <p >Địa điểm:</p>
                             <p>Số chỗ còn lại:</p>
                             <p>Giá:</p>
+                            <p th:text="${numError}" style="color: red;"></p>
+                            <p th:text="${dateError}" style="color: red;"></p>
                         </div>
                         <div class="header_bill_value">
                             <p th:text="${idtour}"></p>
@@ -131,7 +133,8 @@
                                 <option th:value="vnpay">Thanh toán qua ví VNPay</option>
                             </select>
                         </div>
-                        <button type="sumit" class="btn_book_tour">Đặt vé</button>
+                        <button th:if="${condition}" type="sumit" class="btn_book_tour">Đặt vé</button>
+
                     </form>
                 </div>
             </div>                

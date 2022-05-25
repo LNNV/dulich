@@ -13,6 +13,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie [] cookies = request.getCookies();
         String username = "";
+        if (cookies == null) {
+            response.sendRedirect("/login");
+            return false;
+        }
         for (Cookie cookie : cookies)
             if (cookie.getName().equals("username"))
                 username = cookie.getValue();

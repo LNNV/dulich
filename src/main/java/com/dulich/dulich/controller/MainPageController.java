@@ -31,6 +31,10 @@ public class MainPageController {
     @Autowired
     FeedbackRepository feedbackRepository;
 
+    @RequestMapping("/")
+    public String goToHome() {
+        return "redirect:home";
+    }
     @RequestMapping("/home")
     public String home(@CookieValue(value = "username", defaultValue = "") String username, Model model) {
         if (username.equals("")) model.addAttribute("loged", null);
